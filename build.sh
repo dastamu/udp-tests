@@ -33,6 +33,14 @@ case "$1" in
         # On Windows (cmd as Administrator):
         #mklink compile_commands.json build\compile_commands.json
         ;;
+    "-cmake2")
+        echo "=== Cmake..."
+        mkdir -p build-cmake
+        cd build-cmake/
+        cmake .. -G Ninja
+        ninja -j4
+        cd ..
+        ;;
     "-meson")
         echo "=== Meson..."
         meson setup "build-meson" -Dbuildtype=release && meson compile -C "build-meson"
@@ -41,6 +49,12 @@ case "$1" in
         echo "=== Meson..."
         meson compile -C "build-meson" --clean
         meson setup "build-meson" --buildtype=release && meson compile -C "build-meson"
+        ;;
+    "-xmake")
+        echo "=== Xmake..."
+        xmake f -m release
+        xmake
+        #xmake run hello
         ;;
     *)
         printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-makeclean|-cmake|-meson|-mesonclean\n"
