@@ -39,7 +39,7 @@ case "$1" in
     "-mesonclean")
         echo "=== Meson..."
         meson compile -C "build-meson" --clean
-        meson setup "build-meson" --buildtype=release&& meson compile -C "build-meson"
+        meson setup "build-meson" --buildtype=release && meson compile -C "build-meson"
         ;;
     *)
         printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-makeclean|-cmake|-meson|-mesonclean\n"
