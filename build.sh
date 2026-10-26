@@ -25,7 +25,8 @@ case "$1" in
         ;;
     "-cmake")
         echo "=== Cmake..."
-        cmake -B "build-cmake" -S . && cmake --build "build-cmake"
+        #cmake -B "build-cmake" -S . && cmake --build "build-cmake"
+        cmake -G Ninja -B "build-cmake" -S . && cmake --build "build-cmake"
         # (For clangd) Create a symbolic link or copy the generated file to the main directory
         # On Linux/macOS:
         #ln -s build/compile_commands.json .
