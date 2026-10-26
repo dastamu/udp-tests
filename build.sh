@@ -11,21 +11,22 @@ StartStamp=$(date +%s%N)
 # Checking first argument
 case "$1" in
     "-gcc")
-        echo " GCC..."
+        echo "=== GCC..."
         mkdir -p build-gcc
         g++ -std=c++20 -O3 src/udp1.cpp -o build-gcc/udp1.exe
         ;;
     "-make")
-        echo " Make..."
+        echo "=== Make..."
+        make clean all
         ;;
     "-cmake")
-        echo " Cmake..."
+        echo "=== Cmake..."
         ;;
     "-meson")
-        echo " Meson..."
+        echo "=== Meson..."
         ;;
     *)
-        printf " Unknown option: '${1}'\n Use: sh ${0} -gcc|-make|-cmake|-meson"
+        printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-cmake|-meson\n"
         exit 1
         ;;
 esac
