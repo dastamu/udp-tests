@@ -2,7 +2,7 @@
 
 # Checking if first argument exists
 if [ -z "$1" ]; then
-    echo " Error: give an argument, one of -gcc|-make|-cmake|-meson !!!"
+    echo " Error: give an argument, one of -gcc|-make|-makeclean|-cmake|-meson|-mesonclean !!!"
     exit 1
 fi
 
@@ -17,6 +17,10 @@ case "$1" in
         ;;
     "-make")
         echo "=== Make..."
+        make
+        ;;
+    "-makeclean")
+        echo "=== Make Clean All..."
         make clean all
         ;;
     "-cmake")
@@ -30,9 +34,15 @@ case "$1" in
         ;;
     "-meson")
         echo "=== Meson..."
+        meson setup "build-meson" -Dbuildtype=release && meson compile -C "build-meson"
+        ;;
+    "-mesonclean")
+        echo "=== Meson..."
+        meson compile -C "build-meson" --clean
+        meson setup "build-meson" --buildtype=release&& meson compile -C "build-meson"
         ;;
     *)
-        printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-cmake|-meson\n"
+        printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-makeclean|-cmake|-meson|-mesonclean\n"
         exit 1
         ;;
 esac
