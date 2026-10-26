@@ -12,7 +12,7 @@ StartStamp=$(date +%s%N)
 case "$1" in
     "-gcc")
         echo "=== GCC..."
-        mkdir -p build-gcc
+        mkdir -p "build-gcc"
         g++ -std=c++20 -O3 src/udp1.cpp -o build-gcc/udp1.exe
         ;;
     "-make")
@@ -21,6 +21,12 @@ case "$1" in
         ;;
     "-cmake")
         echo "=== Cmake..."
+        cmake -B "build-cmake" -S . && cmake --build "build-cmake"
+        # (For clangd) Create a symbolic link or copy the generated file to the main directory
+        # On Linux/macOS:
+        #ln -s build/compile_commands.json .
+        # On Windows (cmd as Administrator):
+        #mklink compile_commands.json build\compile_commands.json
         ;;
     "-meson")
         echo "=== Meson..."
@@ -33,6 +39,6 @@ esac
 
 StopStamp=$(date +%s%N)
 ms=$(( (StopStamp - StartStamp) / 1000000 ))
-echo " -- Duration: $ms [ms]"
+echo "=== Duration: $ms [ms]"
 
 # end
