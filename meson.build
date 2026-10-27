@@ -13,7 +13,7 @@ cpp_compiler = meson.get_compiler('cpp')
 add_project_arguments('-D_GNU_SOURCE', language : 'cpp')
 
 # Główny plik wykonywalny projektu (wygeneruje udp.exe na Windowsie lub udp na Linuksie)
-executable('udp1',
+executable('udp1.exe',
   'src/udp1.cpp',
   #strip : true, # Usuwa symbole debugowania i zmniejsza plik wykonywalny
   install : true
