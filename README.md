@@ -9,5 +9,5 @@ sudo apt install g++ make cmake meson ninja-build xmake
 ```
 ## Building
 ```sh
-sh build.sh [-gcc|-make|-cmake|-meson]
+sh build.sh [-gcc|-make|-cmake|-meson|-xmake]
 ```
