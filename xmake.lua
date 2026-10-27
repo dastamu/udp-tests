@@ -5,3 +5,5 @@ target("udp1")
     set_optimize("fastest") -- odpowiednik -O3
     -- Katalog budowania
     set_targetdir("build-xmake")
+    -- Wymuszenie własnej nazwy pliku wykonywalnego na dysku
+    set_filename("udp1.exe")
