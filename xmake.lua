@@ -3,3 +3,5 @@ target("udp1")
     add_files("src/udp1.cpp")
     set_languages("c++20")
     set_optimize("fastest") -- odpowiednik -O3
+    -- Katalog budowania
+    set_targetdir("build-xmake")
