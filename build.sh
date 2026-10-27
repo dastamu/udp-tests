@@ -65,5 +65,6 @@ esac
 StopStamp=$(date +%s%N)
 ms=$(( (StopStamp - StartStamp) / 1000000 ))
 echo "=== Duration: $ms [ms]"
+echo "Duration: $ms [ms]" > "build${1}/duration.txt"
 
 # end
