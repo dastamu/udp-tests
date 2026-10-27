@@ -18,4 +18,4 @@ if(CMAKE_CXX_COMPILER_ID STREQUAL "GNU" OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang
 endif()
 
 # Rename output file to udp.exe (optional, useful on Windows)
-#set_target_properties(udp_app PROPERTIES OUTPUT_NAME "udp" SUFFIX ".exe")
+set_target_properties(udp1 PROPERTIES OUTPUT_NAME "udp1" SUFFIX ".exe")
