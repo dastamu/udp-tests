@@ -1,0 +1,11 @@
+[
+{
+  "directory": "/home/dmucha/Robos/udp-tests",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-O3", "-std=c11", "-o", "build/.objs/udp0/linux/x86_64/release/src/udp0.c.o", "src/udp0.c"],
+  "file": "src/udp0.c"
+},
+{
+  "directory": "/home/dmucha/Robos/udp-tests",
+  "arguments": ["/usr/bin/g++", "-c", "-m64", "-O3", "-std=c++20", "-o", "build/.objs/udp1/linux/x86_64/release/src/udp1.cpp.o", "src/udp1.cpp"],
+  "file": "src/udp1.cpp"
+}]
