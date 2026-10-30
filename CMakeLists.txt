@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.15)
-project(Udp1Project LANGUAGES CXX)
+project(Udp1Project LANGUAGES C CXX)
 
 # Force clangd to generate a build database
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -19,3 +19,6 @@ endif()
 
 # Rename output file to udp.exe (optional, useful on Windows)
 set_target_properties(udp1 PROPERTIES OUTPUT_NAME "udp1" SUFFIX ".exe")
+
+add_executable(udp0 src/udp0.c)
+set_target_properties(udp0 PROPERTIES OUTPUT_NAME "udp0" SUFFIX ".exe")
