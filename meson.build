@@ -1,4 +1,4 @@
-project('udp1_project', 'cpp',
+project('udp1_project', 'c', 'cpp',
   version : '0.1',
   default_options : [
     'cpp_std=c++20',
@@ -15,6 +15,12 @@ add_project_arguments('-D_GNU_SOURCE', language : 'cpp')
 # Główny plik wykonywalny projektu (wygeneruje udp.exe na Windowsie lub udp na Linuksie)
 executable('udp1.exe',
   'src/udp1.cpp',
+  #strip : true, # Usuwa symbole debugowania i zmniejsza plik wykonywalny
+  install : true
+)
+
+executable('udp0.exe',
+  'src/udp0.cpp',
   #strip : true, # Usuwa symbole debugowania i zmniejsza plik wykonywalny
   install : true
 )
