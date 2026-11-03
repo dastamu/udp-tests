@@ -1,9 +1,9 @@
 # Configuration variables
-CXX      := g++
-CXXFLAGS := -std=c++20 -O3 -Wall -Wextra
-BUILD_DIR := build-make
-TARGET   := $(BUILD_DIR)/udp1.exe
-SRC      := src/udp1.cpp
+CXX       := g++
+CXXFLAGS  := -std=c++20 -O3 -Wall -Wextra
+BUILD_DIR := .build-make
+TARGET    := $(BUILD_DIR)/udp1.exe
+SRC       := src/udp1.cpp
 
 # Default rule (triggered by typing just 'make')
 all: $(TARGET)

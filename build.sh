@@ -2,7 +2,7 @@
 
 # Checking if first argument exists
 if [ -z "$1" ]; then
-    echo " Error: give an argument, one of -gcc|-make|-makeclean|-cmake|-meson|-mesonclean !!!"
+    echo " Error: give an argument, one of -gcc|-make|-makeclean|-cmake|-meson|-mesonclean|-xmake !!!"
     exit 1
 fi
 
@@ -12,8 +12,8 @@ StartStamp=$(date +%s%N)
 case "$1" in
     "-gcc")
         echo "=== GCC..."
-        mkdir -p "build-gcc"
-        g++ -std=c++20 -O3 src/udp1.cpp -o build-gcc/udp1.exe
+        mkdir -p ".build-gcc"
+        g++ -std=c++20 -O3 src/udp1.cpp -o .build-gcc/udp1.exe
         ;;
     "-make")
         echo "=== Make..."
@@ -26,7 +26,7 @@ case "$1" in
     "-cmake")
         echo "=== Cmake..."
         #cmake -B "build-cmake" -S . && cmake --build "build-cmake"
-        cmake -G Ninja -B "build-cmake" -S . && cmake --build "build-cmake"
+        cmake -G Ninja -B ".build-cmake" -S . && cmake --build ".build-cmake"
         # (For clangd) Create a symbolic link or copy the generated file to the main directory
         # On Linux/macOS:
         #ln -s build/compile_commands.json .
@@ -35,20 +35,20 @@ case "$1" in
         ;;
     "-cmake2")
         echo "=== Cmake..."
-        mkdir -p build-cmake
-        cd build-cmake/
+        mkdir -p .build-cmake
+        cd .build-cmake/
         cmake .. -G Ninja
         ninja -j4
         cd ..
         ;;
     "-meson")
         echo "=== Meson..."
-        meson setup "build-meson" -Dbuildtype=release && meson compile -C "build-meson"
+        meson setup ".build-meson" -Dbuildtype=release && meson compile -C ".build-meson"
         ;;
     "-mesonclean")
         echo "=== Meson..."
-        meson compile -C "build-meson" --clean
-        meson setup "build-meson" --buildtype=release && meson compile -C "build-meson"
+        meson compile -C ".build-meson" --clean
+        meson setup ".build-meson" --buildtype=release && meson compile -C ".build-meson"
         ;;
     "-xmake")
         echo "=== Xmake..."
@@ -57,7 +57,7 @@ case "$1" in
         #xmake run hello
         ;;
     *)
-        printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-makeclean|-cmake|-meson|-mesonclean\n"
+        printf "=== Unknown option: '${1}'\nUse: sh ${0} -gcc|-make|-makeclean|-cmake|-meson|-mesonclean|xmake\n"
         exit 1
         ;;
 esac
@@ -65,6 +65,6 @@ esac
 StopStamp=$(date +%s%N)
 ms=$(( (StopStamp - StartStamp) / 1000000 ))
 echo "=== Duration: $ms [ms]"
-echo "Duration: $ms [ms]" > "build${1}/duration.txt"
+echo "Duration: $ms [ms]" > ".build${1}/__duration.txt"
 
 # end
